@@ -10,7 +10,7 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
     public Student getStudent(int id) {
-        return studentRepository.findById(id).orElse(null);
+        return studentRepository.findStudentById(id);
     }
     public Student createStudent(Student student) {
         return studentRepository.save(student);
@@ -28,18 +28,17 @@ public class StudentService {
         return studentRepository.save(studenT);
     }
     public boolean deleteStudent(int id) {
-        Student studenT = studentRepository.findById(id).orElse(null);
-        if (studenT == null) {
-            return false;
-        }
-        studentRepository.delete(studenT);
+        studentRepository.deleteStudentById(id);
         return true;
     }
     public List<Student> getAllStudents() {
-        return studentRepository.findAll();
+        return studentRepository.findAllStudents();
     }
-    public List<Student> getStudentsByFirstName(String firstName) {
+    public List<Student> getByFirstName(String firstName) {
         return studentRepository.findByFirstName(firstName);
+    }
+    public List<Student> findByLastName(String lastName) {
+        return studentRepository.findByLastName(lastName);
     }
     public List<Student> getStudentsByAgeGreaterThan(Integer age) {
         return studentRepository.findByAgeGreaterThan(age);
@@ -48,9 +47,6 @@ public class StudentService {
         return studentRepository.findByActive();
     }
     public List<Student> getInactiveStudents() {
-        return studentRepository.findByFalse();
-    }
-    public List<Student> findByLastName(String lastName) {
-        return studentRepository.findByLastName(lastName);
+        return studentRepository.findByInactive();
     }
 }
