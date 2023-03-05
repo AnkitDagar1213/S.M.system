@@ -24,7 +24,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     public List<Student> findByLastName(@Param("lastName") String lastName);
     @Query("SELECT * FROM Student WHERE firstName = :firstName")
     public List<Student> findByFirstName(@Param("firstName") String firstName);
-    @Query("SELECT s FROM Student s WHERE s.age > :age")
+    @Query("SELECT * FROM Student WHERE age > :age")
     List<Student> findByAgeGreaterThan(@Param("age") Integer age);
     @Query("SELECT * FROM Student WHERE active = true")
     List<Student> findByActive();
