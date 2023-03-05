@@ -6,12 +6,12 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
-	<groupId>com.geekster</groupId>
-	<artifactId>weeklyTest</artifactId>
+	<groupId>com.example</groupId>
+	<artifactId>S.M.system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>weeklyTest</name>
+	<name>S.M.system</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>19</java.version>
