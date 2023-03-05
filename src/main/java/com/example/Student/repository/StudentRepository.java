@@ -13,21 +13,21 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
-    @Query(value="SELECT * FROM Student ", nativeQuery = true)
+    @Query("SELECT * FROM Student ")
     public List<Student> findAllStudents();
-    @Query(value="SELECT * FROM Student WHERE id = :id", nativeQuery = true)
-    public Student findStudentById(int id);
+    @Query("SELECT * FROM Student WHERE id = :id")
+    public Student findStudentById(@Param("id") int id);
     @Modifying
-    @Query(value="DELETE * FROM Student WHERE id = :id", nativeQuery = true)
-    public void deleteStudentById(int id);
-    @Query(value="SELECT * FROM Student WHERE lastName = :lastName", nativeQuery = true)
-    public List<Student> findByLastName(String lastName);
-    @Query(value="SELECT * FROM Student WHERE firstName = :firstName", nativeQuery = true)
-    public List<Student> findByFirstName(String firstName);
-    @Query(value="SELECT s FROM Student s WHERE s.age > :age", nativeQuery = true)
-    List<Student> findByAgeGreaterThan(Integer age);
-    @Query(value="SELECT * FROM Student WHERE active = true", nativeQuery = true)
+    @Query("DELETE * FROM Student WHERE id = :id")
+    public void deleteStudentById(@Param("id") int id);
+    @Query("SELECT * FROM Student WHERE lastName = :lastName")
+    public List<Student> findByLastName(@Param("lastName") String lastName);
+    @Query("SELECT * FROM Student WHERE firstName = :firstName")
+    public List<Student> findByFirstName(@Param("firstName") String firstName);
+    @Query("SELECT s FROM Student s WHERE s.age > :age")
+    List<Student> findByAgeGreaterThan(@Param("age") Integer age);
+    @Query("SELECT * FROM Student WHERE active = true")
     List<Student> findByActive();
-    @Query(value="SELECT * FROM Student WHERE active = false", nativeQuery = true)
+    @Query("SELECT * FROM Student WHERE active = false")
     List<Student> findByFalse();
 }
